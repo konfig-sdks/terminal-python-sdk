@@ -18,6 +18,7 @@ from terminal_python_sdk.type_util import copy_signature
 from terminal_python_sdk.apis.tags.authentication_api import AuthenticationApi
 from terminal_python_sdk.apis.tags.connections_api import ConnectionsApi
 from terminal_python_sdk.apis.tags.data_management_api import DataManagementApi
+from terminal_python_sdk.apis.tags.devices_api import DevicesApi
 from terminal_python_sdk.apis.tags.drivers_api import DriversApi
 from terminal_python_sdk.apis.tags.groups_api import GroupsApi
 from terminal_python_sdk.apis.tags.hours_of_service_api import HoursOfServiceApi
@@ -43,6 +44,7 @@ class Terminal(ClientCustom):
         self.authentication: AuthenticationApi = AuthenticationApi(api_client)
         self.connections: ConnectionsApi = ConnectionsApi(api_client)
         self.data_management: DataManagementApi = DataManagementApi(api_client)
+        self.devices: DevicesApi = DevicesApi(api_client)
         self.drivers: DriversApi = DriversApi(api_client)
         self.groups: GroupsApi = GroupsApi(api_client)
         self.hours_of_service: HoursOfServiceApi = HoursOfServiceApi(api_client)

@@ -32,6 +32,7 @@ Contact Support:
   * [`terminal.data_management.list_sync_history`](#terminaldata_managementlist_sync_history)
   * [`terminal.data_management.make_passthrough_request`](#terminaldata_managementmake_passthrough_request)
   * [`terminal.data_management.request_sync_manual`](#terminaldata_managementrequest_sync_manual)
+  * [`terminal.devices.get_all_devices`](#terminaldevicesget_all_devices)
   * [`terminal.drivers.get_details`](#terminaldriversget_details)
   * [`terminal.drivers.list`](#terminaldriverslist)
   * [`terminal.groups.get_all_groups`](#terminalgroupsget_all_groups)
@@ -185,22 +186,19 @@ For most use cases we recommend using the [Link UI](./rhuaxk9205cn8-link-compone
 terminal.connections.create_custom_connection(
     tags=["Tag Name", "Tag Name"],
     backfill={
-        "days": 4.589623110260823e7,
+        "days": 9.882148536761618e7,
         "start_from": "2021-01-06T03:24:53.000Z",
     },
     company={
-        "dot_numbers": [
-            "tempor ea cupidatat incididunt proident",
-            "cupidatat occaecat do enim",
-        ],
-        "name": "minim nostrud",
+        "dot_numbers": ["ipsum in", "anim pariatur Excepteur cupidatat enim"],
+        "name": "ipsum irure labore",
     },
     credentials={
-        "database": "amet ut laborum est",
-        "password": "esse ut nostrud",
-        "username": "nisi in culpa",
+        "database": "sint in dolore",
+        "password": "tempor sed minim",
+        "username": "ut incididunt aliqua",
     },
-    external_id="ullamco dolore ipsum",
+    external_id="quis proident",
     provider="geotab",
     sync_mode="automatic",
 )
@@ -274,7 +272,7 @@ terminal.connections.list_all(
     limit="1",
     external_id="123",
     dot_number="123",
-    tag="tempor in aliqua",
+    tag="qui tempor",
 )
 ```
 
@@ -312,12 +310,12 @@ Update the details of the current active connection. The current connection is d
 
 ```python
 terminal.connections.update_current_connection_details(
-    tags=["dolor in magna", "reprehenderit dolor nostrud"],
+    tags=["esse sit veniam et", "sunt u"],
     company={
         "name": "Acme Inc.",
     },
-    external_id="ad sed dolore cupidatat",
-    status="laborum sed consectetur",
+    external_id="eu cillum",
+    status="incididunt reprehenderit sunt",
     sync_mode="automatic",
     connection_token="{{connectionToken}}",
 )
@@ -507,6 +505,57 @@ terminal.data_management.request_sync_manual(
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/syncs` `post`
+
+[🔙 **Back to Table of Contents**](#table-of-contents)
+
+---
+
+### `terminal.devices.get_all_devices`<a id="terminaldevicesget_all_devices"></a>
+
+List all devices in the connected account.
+
+#### 🛠️ Usage<a id="🛠️-usage"></a>
+
+```python
+terminal.devices.get_all_devices(
+    cursor="{{nextCursor}}",
+    limit="1",
+    modified_after="2021-01-06T03:24:53.000Z",
+    modified_before="2021-01-06T03:24:53.000Z",
+    raw="true",
+    connection_token="{{connectionToken}}",
+)
+```
+
+#### ⚙️ Parameters<a id="⚙️-parameters"></a>
+
+##### cursor: `str`<a id="cursor-str"></a>
+
+Pagination cursor to start requests from
+
+##### limit: `str`<a id="limit-str"></a>
+
+The maximum number of results to return in a page.
+
+##### modified_after: `str`<a id="modified_after-str"></a>
+
+Only include records that were last modified after a provided date.
+
+##### modified_before: `str`<a id="modified_before-str"></a>
+
+Only include records that were last modified before a provided date.
+
+##### raw: `str`<a id="raw-str"></a>
+
+Include raw responses used to normalize model. Used for debugging or accessing unique properties that are not unified.
+
+##### connection_token: `str`<a id="connection_token-str"></a>
+
+(Required) The token returned when a user authenticated their account. This authorizes access to a specific account.
+
+#### 🌐 Endpoint<a id="🌐-endpoint"></a>
+
+`/devices` `get`
 
 [🔙 **Back to Table of Contents**](#table-of-contents)
 
@@ -726,8 +775,8 @@ List daily summary of hours of service. Each daily log represents the time a dri
 terminal.hours_of_service.get_daily_logs(
     cursor="{{nextCursor}}",
     limit="1",
-    start_date="1995-04-25",
-    end_date="1995-04-25",
+    start_date="2013-12-08",
+    end_date="2013-12-08",
     modified_after="2021-01-06T03:24:53.000Z",
     modified_before="2021-01-06T03:24:53.000Z",
     driver_ids="{{driverId}}",
@@ -930,11 +979,11 @@ For example, if we lack permissions for a specific resource or need to skip an i
 terminal.issues.list_observed_events(
     limit="1",
     cursor="{{nextCursor}}",
-    last_reported_after="2023-06-07",
-    last_reported_before="2023-06-07",
+    last_reported_after="1973-09-17",
+    last_reported_before="1973-09-17",
     expand="",
     connection_id="conn_01GV12VR4DJP70GD1ZBK0SDWFH",
-    error_code="invalid_source_id",
+    error_code="exceeded_retention_window",
     status="ongoing",
 )
 ```
@@ -989,7 +1038,7 @@ Mark an issue's status as `resolved` until the issue is observed again.
 
 ```python
 terminal.issues.mark_resolved(
-    issue_id="tempor in aliqua",
+    issue_id="qui tempor",
 )
 ```
 
@@ -999,9 +1048,6 @@ terminal.issues.mark_resolved(
 
 (Required) 
 
-#### ⚙️ Request Body<a id="⚙️-request-body"></a>
-
-`Dict[str, Union[bool, date, datetime, dict, float, int, list, str, None]]`
 #### 🌐 Endpoint<a id="🌐-endpoint"></a>
 
 `/issues/{issueId}/resolve` `post`

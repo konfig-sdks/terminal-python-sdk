@@ -26,6 +26,7 @@ from terminal_python_sdk.apis.paths.vehicles_locations import VehiclesLocations
 from terminal_python_sdk.apis.paths.vehicles_vehicle_id_locations import VehiclesVehicleIdLocations
 from terminal_python_sdk.apis.paths.vehicles_vehicle_id_stats_historical import VehiclesVehicleIdStatsHistorical
 from terminal_python_sdk.apis.paths.trips import Trips
+from terminal_python_sdk.apis.paths.devices import Devices
 
 PathToApi = typing_extensions.TypedDict(
     'PathToApi',
@@ -55,6 +56,7 @@ PathToApi = typing_extensions.TypedDict(
         PathValues.VEHICLES_VEHICLE_ID_LOCATIONS: VehiclesVehicleIdLocations,
         PathValues.VEHICLES_VEHICLE_ID_STATS_HISTORICAL: VehiclesVehicleIdStatsHistorical,
         PathValues.TRIPS: Trips,
+        PathValues.DEVICES: Devices,
     }
 )
 
@@ -85,5 +87,6 @@ path_to_api = PathToApi(
         PathValues.VEHICLES_VEHICLE_ID_LOCATIONS: VehiclesVehicleIdLocations,
         PathValues.VEHICLES_VEHICLE_ID_STATS_HISTORICAL: VehiclesVehicleIdStatsHistorical,
         PathValues.TRIPS: Trips,
+        PathValues.DEVICES: Devices,
     }
 )

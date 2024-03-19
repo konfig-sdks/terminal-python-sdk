@@ -19,4 +19,5 @@ class TagValues(str, enum.Enum):
     PROVIDERS = "Providers"
     SAFETY = "Safety"
     TRIPS = "Trips"
+    DEVICES = "Devices"
     WEBHOOK_EVENTS = "Webhook Events"

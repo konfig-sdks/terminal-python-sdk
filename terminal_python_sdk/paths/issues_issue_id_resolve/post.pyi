@@ -62,16 +62,6 @@ request_path_issue_id = api_client.PathParameter(
     schema=IssueIdSchema,
     required=True,
 )
-# body param
-SchemaForRequestBodyApplicationJson = schemas.DictSchema
-
-
-request_body_body = api_client.RequestBody(
-    content={
-        'application/json': api_client.MediaType(
-            schema=SchemaForRequestBodyApplicationJson),
-    },
-)
 
 
 @dataclass
@@ -98,8 +88,6 @@ class BaseApi(api_client.Api):
     ) -> api_client.MappedArgs:
         args: api_client.MappedArgs = api_client.MappedArgs()
         _path_params = {}
-        _body = {}
-        args.body = _body
         if issue_id is not None:
             _path_params["issueId"] = issue_id
         args.path = _path_params
@@ -107,11 +95,9 @@ class BaseApi(api_client.Api):
 
     async def _amark_resolved_oapg(
         self,
-        body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
-        content_type: str = 'application/json',
         stream: bool = False,
         **kwargs,
     ) -> typing.Union[
@@ -144,33 +130,18 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
         method = 'post'.upper()
-        _headers.add('Content-Type', content_type)
-    
-        _fields = None
-        _body = None
         request_before_hook(
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
             path_template='/issues/{issueId}/resolve',
-            body=body,
             auth_settings=_auth,
             headers=_headers,
         )
-        if body is not schemas.unset:
-            serialized_data = request_body_body.serialize(body, content_type)
-            if 'fields' in serialized_data:
-                _fields = serialized_data['fields']
-            elif 'body' in serialized_data:
-                _body = serialized_data['body']
     
         response = await self.api_client.async_call_api(
             resource_path=used_path,
             method=method,
-            headers=_headers,
-            fields=_fields,
-            serialized_body=_body,
-            body=body,
             auth_settings=_auth,
             timeout=timeout,
             **kwargs
@@ -232,11 +203,9 @@ class BaseApi(api_client.Api):
 
     def _mark_resolved_oapg(
         self,
-        body: typing.Any = None,
             path_params: typing.Optional[dict] = {},
         skip_deserialization: bool = True,
         timeout: typing.Optional[typing.Union[float, typing.Tuple]] = None,
-        content_type: str = 'application/json',
         stream: bool = False,
     ) -> typing.Union[
         ApiResponseFor200,
@@ -267,33 +236,18 @@ class BaseApi(api_client.Api):
         _headers = HTTPHeaderDict()
         # TODO add cookie handling
         method = 'post'.upper()
-        _headers.add('Content-Type', content_type)
-    
-        _fields = None
-        _body = None
         request_before_hook(
             resource_path=used_path,
             method=method,
             configuration=self.api_client.configuration,
             path_template='/issues/{issueId}/resolve',
-            body=body,
             auth_settings=_auth,
             headers=_headers,
         )
-        if body is not schemas.unset:
-            serialized_data = request_body_body.serialize(body, content_type)
-            if 'fields' in serialized_data:
-                _fields = serialized_data['fields']
-            elif 'body' in serialized_data:
-                _body = serialized_data['body']
     
         response = self.api_client.call_api(
             resource_path=used_path,
             method=method,
-            headers=_headers,
-            fields=_fields,
-            serialized_body=_body,
-            body=body,
             auth_settings=_auth,
             timeout=timeout,
         )
@@ -338,7 +292,6 @@ class MarkResolvedRaw(BaseApi):
             issue_id=issue_id,
         )
         return await self._amark_resolved_oapg(
-            body=args.body,
             path_params=args.path,
             **kwargs,
         )
@@ -354,7 +307,6 @@ class MarkResolvedRaw(BaseApi):
             issue_id=issue_id,
         )
         return self._mark_resolved_oapg(
-            body=args.body,
             path_params=args.path,
         )
 
@@ -398,7 +350,6 @@ class ApiForpost(BaseApi):
             issue_id=issue_id,
         )
         return await self._amark_resolved_oapg(
-            body=args.body,
             path_params=args.path,
             **kwargs,
         )
@@ -414,7 +365,6 @@ class ApiForpost(BaseApi):
             issue_id=issue_id,
         )
         return self._mark_resolved_oapg(
-            body=args.body,
             path_params=args.path,
         )
 

@@ -31,3 +31,4 @@ class PathValues(str, enum.Enum):
     VEHICLES_VEHICLE_ID_LOCATIONS = "/vehicles/{vehicleId}/locations"
     VEHICLES_VEHICLE_ID_STATS_HISTORICAL = "/vehicles/{vehicleId}/stats/historical"
     TRIPS = "/trips"
+    DEVICES = "/devices"

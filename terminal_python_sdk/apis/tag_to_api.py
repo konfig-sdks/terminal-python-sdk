@@ -14,6 +14,7 @@ from terminal_python_sdk.apis.tags.ifta_api import IFTAApi
 from terminal_python_sdk.apis.tags.providers_api import ProvidersApi
 from terminal_python_sdk.apis.tags.safety_api import SafetyApi
 from terminal_python_sdk.apis.tags.trips_api import TripsApi
+from terminal_python_sdk.apis.tags.devices_api import DevicesApi
 from terminal_python_sdk.apis.tags.webhook_events_api import WebhookEventsApi
 
 TagToApi = typing_extensions.TypedDict(
@@ -32,6 +33,7 @@ TagToApi = typing_extensions.TypedDict(
         TagValues.PROVIDERS: ProvidersApi,
         TagValues.SAFETY: SafetyApi,
         TagValues.TRIPS: TripsApi,
+        TagValues.DEVICES: DevicesApi,
         TagValues.WEBHOOK_EVENTS: WebhookEventsApi,
     }
 )
@@ -51,6 +53,7 @@ tag_to_api = TagToApi(
         TagValues.PROVIDERS: ProvidersApi,
         TagValues.SAFETY: SafetyApi,
         TagValues.TRIPS: TripsApi,
+        TagValues.DEVICES: DevicesApi,
         TagValues.WEBHOOK_EVENTS: WebhookEventsApi,
     }
 )
